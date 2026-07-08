@@ -1,0 +1,2 @@
+# bind
+Bind authoritative role
