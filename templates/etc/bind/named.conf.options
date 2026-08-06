@@ -1,0 +1,25 @@
+options {
+        directory "/var/cache/bind";
+
+        // Forwarders - upstream DNS servers for queries this server cannot resolve
+        forwarders {
+            "{{dnsforwarders}}"
+        };
+
+        // Listen on all interfaces
+        listen-on { any; };
+        listen-on-v6 { any; };
+
+        // Allow queries from your network
+        allow-query { localhost; 10.0.1.0/24; };
+
+        // Enable recursion for local clients
+        recursion yes;
+        allow-recursion { localhost; 10.0.1.0/24; };
+
+        // Disable zone transfers by default (override per-zone)
+        allow-transfer { none; };
+
+        // DNSSEC validation
+        dnssec-validation auto;
+};

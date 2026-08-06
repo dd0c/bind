@@ -1,0 +1,20 @@
+---
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: Ensure packages for Bind9 are present
+  ansible.builtin.apt:
+    pkg:
+    - bind9
+    - bind9utils
+    - bind9-doc
+    - dnsutils
+
+...
