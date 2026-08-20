@@ -19,6 +19,7 @@
   ansible.builtin.dnf:
     name:
       - bind
+      - bind-dnssec-utils
       - bind-utils
     state: present
 
@@ -27,5 +28,10 @@
     name: named
     enabled: true
     state: started
+
+- name: Write named.conf file from template
+  ansible.builtin.template:
+    src: templates/etc/named.conf.j2
+    dest: /etc/named.conf
 
 ...
